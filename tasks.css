@@ -1,0 +1,744 @@
+/* ==========================================
+   TECHBRIDGE, INTERNSHIP TASKS PAGE
+   Loads AFTER styles.css and reuses its variables,
+   navbar, buttons, footer and animations.
+========================================== */
+
+.nav-links a.active {
+    color: var(--navy);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+html {
+    scroll-padding-top: 90px;
+}
+
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+.page-hero {
+    padding: 70px 8% 90px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.page-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(46px, 5.5vw, 70px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    color: var(--navy);
+}
+
+.page-hero h1 span {
+    color: var(--green);
+    display: block;
+}
+
+.page-hero .hero-description {
+    max-width: 540px;
+}
+
+.stat-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.stat-tile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 28px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--green);
+    transition: var(--transition);
+}
+
+.stat-tile:nth-child(2) { border-left-color: var(--navy); }
+
+.stat-tile:hover {
+    transform: translateX(8px);
+    box-shadow: 0 20px 45px rgba(16, 7, 71, 0.08);
+}
+
+.stat-tile strong {
+    min-width: 62px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 54px;
+    line-height: 1;
+    color: var(--navy);
+}
+
+.stat-tile span {
+    font-size: var(--body-size);
+    line-height: 1.6;
+    color: var(--text);
+}
+
+
+/* ==========================================
+   30-DAY TIMELINE BAR
+========================================== */
+
+.journey {
+    background: var(--ash);
+}
+
+.journey .section-heading h2,
+.roadmap .section-heading h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(35px, 4vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    color: var(--navy);
+}
+
+.journey .section-heading h2 span,
+.roadmap .section-heading h2 span {
+    color: var(--green-dark);
+}
+
+.journey-track {
+    position: relative;
+    height: 110px;
+    margin: 0 20px;
+}
+
+.track-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 28px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.track-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 26.67%;
+    background: var(--green);
+    border-radius: 4px;
+}
+
+.track-mark {
+    position: absolute;
+    top: 10px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.track-mark i {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-style: normal;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    background: var(--white);
+    border: 3px solid var(--navy);
+    color: var(--navy);
+    transition: var(--transition);
+}
+
+.track-mark.done i {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+}
+
+.track-mark:hover i {
+    transform: scale(1.12);
+}
+
+.track-mark small,
+.track-end small {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    white-space: nowrap;
+}
+
+.track-end {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    transform: translateX(50%);
+}
+
+.track-end::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -22px;
+    width: 4px;
+    height: 16px;
+    background: var(--border);
+    transform: translateX(-50%);
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 28px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-dot.available { background: var(--green); }
+.legend-dot.upcoming { background: var(--white); border: 3px solid var(--navy); }
+.legend-note { font-weight: 500; color: var(--text); }
+
+
+/* ==========================================
+   TASK ROADMAP
+========================================== */
+
+.roadmap {
+    background: var(--white);
+}
+
+.task-list {
+    list-style: none;
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+/* the vertical line through the day circles */
+.task-list::before {
+    content: "";
+    position: absolute;
+    left: 45px;
+    top: 40px;
+    bottom: 40px;
+    width: 4px;
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.task {
+    position: relative;
+    display: grid;
+    grid-template-columns: 94px 1fr;
+    gap: 24px;
+    margin-bottom: 26px;
+}
+
+.task:last-child { margin-bottom: 0; }
+
+.task-day {
+    position: relative;
+    z-index: 1;
+    width: 94px;
+    height: 94px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    transition: var(--transition);
+}
+
+.task-day small {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.task-day strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.task-available .task-day {
+    background: var(--green);
+    color: var(--white);
+    box-shadow: 0 0 0 2px var(--green);
+}
+
+.task-upcoming .task-day {
+    background: var(--white);
+    color: var(--navy);
+    box-shadow: 0 0 0 2px var(--navy);
+}
+
+.task:hover .task-day {
+    transform: scale(1.06);
+}
+
+/* card */
+.task-card {
+    border: 1px solid var(--border);
+    background: var(--white);
+    transition: var(--transition);
+}
+
+.task-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 20px 45px rgba(16, 7, 71, 0.08);
+}
+
+.task-card[open] {
+    border-color: var(--navy);
+    box-shadow: 0 20px 45px rgba(16, 7, 71, 0.1);
+}
+
+.task-card summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 26px 30px;
+}
+
+.task-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.task-card summary:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: -3px;
+}
+
+.task-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.task-number {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--green-dark);
+}
+
+.task-number i {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    background: #eef8e9;
+    color: var(--green-dark);
+}
+
+.status {
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.status-available {
+    background: #eef8e9;
+    color: var(--green-dark);
+}
+
+.status-upcoming {
+    background: #ecebf5;
+    color: var(--navy);
+}
+
+.task-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+    line-height: 1.25;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.task-card summary p {
+    font-size: var(--body-size);
+    line-height: var(--body-line-height);
+    color: var(--text);
+}
+
+.task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border);
+}
+
+/* difficulty meter: 4 bars, filled by level */
+.difficulty {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.meter {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 18px;
+}
+
+.meter i {
+    width: 7px;
+    background: var(--border);
+    border-radius: 2px;
+}
+
+.meter i:nth-child(1) { height: 7px; }
+.meter i:nth-child(2) { height: 11px; }
+.meter i:nth-child(3) { height: 15px; }
+.meter i:nth-child(4) { height: 18px; }
+
+.difficulty[data-level="1"] .meter i:nth-child(-n+1),
+.difficulty[data-level="2"] .meter i:nth-child(-n+2),
+.difficulty[data-level="3"] .meter i:nth-child(-n+3),
+.difficulty[data-level="4"] .meter i:nth-child(-n+4) {
+    background: var(--green);
+}
+
+.difficulty[data-level="4"] .meter i:nth-child(-n+4) {
+    background: var(--navy);
+}
+
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--navy);
+    transition: var(--transition);
+}
+
+.task-card summary:hover .toggle {
+    color: var(--green-dark);
+    gap: 15px;
+}
+
+.toggle i {
+    transition: transform 0.3s ease;
+}
+
+.task-card[open] .toggle i {
+    transform: rotate(180deg);
+}
+
+/* expanded details */
+.task-more {
+    padding: 4px 30px 28px;
+    animation: menuOpen 0.3s ease;
+}
+
+.task-more h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--navy);
+    margin: 18px 0 8px;
+}
+
+.task-more p {
+    font-size: var(--body-size);
+    line-height: var(--body-line-height);
+    color: var(--text);
+}
+
+.chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chips li {
+    padding: 7px 14px;
+    background: var(--ash);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+
+/* ==========================================
+   CALL TO ACTION
+========================================== */
+
+.tasks-cta {
+    background: var(--navy);
+    color: var(--white);
+    text-align: center;
+}
+
+.tasks-cta-content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.tasks-cta .section-label {
+    color: var(--green);
+}
+
+.tasks-cta h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 4.5vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+.tasks-cta h2 span {
+    display: block;
+    color: var(--green);
+}
+
+.tasks-cta p {
+    max-width: 480px;
+    margin: 22px auto 32px;
+    color: #c5c2d5;
+    font-size: var(--body-size);
+    line-height: var(--body-line-height);
+}
+
+.tasks-cta .hero-buttons {
+    justify-content: center;
+}
+
+.tasks-cta .primary-button:hover {
+    background: var(--white);
+    color: var(--navy);
+}
+
+.light-button {
+    padding: 16px 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.light-button:hover {
+    background: var(--white);
+    color: var(--navy);
+}
+
+
+/* ==========================================
+   SCROLL REVEAL (same technique as Task 1)
+========================================== */
+
+@supports (animation-timeline: view()) {
+
+    .journey .section-heading,
+    .journey-track,
+    .roadmap .section-heading,
+    .task,
+    .tasks-cta-content {
+        animation: revealUp linear backwards;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1050px) {
+
+    .page-hero {
+        padding: 55px 6% 70px;
+        gap: 35px;
+    }
+
+    .page-hero h1 {
+        font-size: 54px;
+    }
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .page-hero {
+        grid-template-columns: 1fr;
+        padding: 40px 6% 55px;
+        gap: 40px;
+    }
+
+    .page-hero h1 {
+        font-size: clamp(42px, 10vw, 56px);
+        letter-spacing: -2px;
+    }
+
+    .stat-tile {
+        padding: 20px 22px;
+        gap: 18px;
+    }
+
+    .stat-tile strong {
+        font-size: 44px;
+        min-width: 52px;
+    }
+
+    .journey-track {
+        margin: 0 14px;
+    }
+
+    .track-mark i {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        border-width: 2px;
+    }
+
+    .track-line { top: 23px; }
+
+    .track-mark small,
+    .track-end small {
+        font-size: 9px;
+    }
+
+    .task-list::before {
+        left: 27px;
+    }
+
+    .task {
+        grid-template-columns: 58px 1fr;
+        gap: 14px;
+    }
+
+    .task-day {
+        width: 58px;
+        height: 58px;
+        border-width: 3px;
+    }
+
+    .task-day small {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .task-day strong {
+        font-size: 21px;
+    }
+
+    .task-card summary {
+        padding: 20px;
+    }
+
+    .task-more {
+        padding: 2px 20px 22px;
+    }
+
+    .task-card h3 {
+        font-size: 21px;
+    }
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+
+    .page-hero h1 {
+        font-size: 40px;
+    }
+
+    .track-mark small {
+        display: none;
+    }
+
+    .journey-track {
+        height: 70px;
+    }
+
+    .track-end {
+        top: 38px;
+    }
+
+    .task-top {
+        flex-wrap: wrap;
+    }
+
+    .task-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tasks-cta .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tasks-cta .primary-button,
+    .light-button {
+        justify-content: center;
+    }
+
+    .tasks-cta h2 {
+        font-size: 38px;
+    }
+}
