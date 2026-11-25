@@ -1,0 +1,328 @@
+/* ==========================================
+   TECHBRIDGE, INTERNSHIP ROADMAP (TASK 4)
+   Loads after styles.css and tasks.css
+========================================== */
+
+/* Each track has its own accent colour */
+.roadmap-app {
+    --accent: var(--navy);
+    background: var(--ash);
+}
+
+.roadmap-app[data-track="data"] {
+    --accent: var(--green);
+}
+
+.roadmap-app .section-heading {
+    margin-bottom: 45px;
+}
+
+
+/* ---------- Track buttons ---------- */
+
+.track-switch {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 920px;
+    margin: 0 auto 36px;
+}
+
+.track-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#tab-data { --btn: var(--green); }
+#tab-web { --btn: var(--navy); }
+
+.track-btn:hover {
+    border-color: var(--btn);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(16, 7, 71, 0.1);
+}
+
+.track-btn:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 3px;
+}
+
+.track-icon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--btn);
+    color: var(--white);
+    font-size: 20px;
+    transition: var(--transition);
+}
+
+.track-text strong {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.track-text small {
+    display: block;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* selected button */
+.track-btn[aria-selected="true"] {
+    background: var(--btn);
+    border-color: var(--btn);
+}
+
+.track-btn[aria-selected="true"] .track-text strong,
+.track-btn[aria-selected="true"] .track-text small {
+    color: var(--white);
+}
+
+.track-btn[aria-selected="true"] .track-icon {
+    background: var(--white);
+    color: var(--btn);
+}
+
+.track-btn[aria-selected="true"]::after {
+    content: "SELECTED";
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--white);
+}
+
+
+/* ---------- Currently viewing ---------- */
+
+.viewing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 30px;
+    max-width: 920px;
+    margin: 0 auto 50px;
+    padding: 24px 28px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--accent);
+}
+
+.viewing-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: var(--text);
+}
+
+.viewing h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    line-height: 1.2;
+    color: var(--accent);
+    margin: 4px 0;
+}
+
+.viewing p:last-child {
+    font-size: var(--body-size);
+    color: var(--text);
+}
+
+.viewing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* ---------- 30-day structure ---------- */
+
+.timeline-wrap {
+    max-width: 920px;
+    margin: 0 auto 10px;
+}
+
+.mini-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: 18px;
+}
+
+.timeline-wrap .journey-track {
+    margin: 0 20px;
+}
+
+/* no "completed" fill in this version of the bar */
+.roadmap-app .track-line::before {
+    display: none;
+}
+
+.roadmap-app .track-mark i {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.roadmap-app .track-mark:hover i {
+    background: var(--accent);
+    color: var(--white);
+}
+
+
+/* ---------- Difficulty key ---------- */
+
+.difficulty-key {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 30px;
+    max-width: 920px;
+    margin: 0 auto 50px;
+    padding: 16px 22px;
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+
+.key-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+
+/* ---------- Task cards ---------- */
+
+.roadmap-app .task-list {
+    max-width: 920px;
+}
+
+.roadmap-app .task .task-day {
+    background: var(--accent);
+    color: var(--white);
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+.roadmap-app .task-card {
+    padding: 26px 30px;
+}
+
+.roadmap-app .task-card:hover {
+    border-color: var(--accent);
+}
+
+.day-pill {
+    padding: 6px 12px;
+    background: var(--ash);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.roadmap-app .task-number {
+    color: var(--accent);
+}
+
+/* meter colour follows the track */
+.roadmap-app .difficulty[data-level="1"] .meter i:nth-child(-n+1),
+.roadmap-app .difficulty[data-level="2"] .meter i:nth-child(-n+2),
+.roadmap-app .difficulty[data-level="3"] .meter i:nth-child(-n+3),
+.roadmap-app .difficulty[data-level="4"] .meter i:nth-child(-n+4) {
+    background: var(--accent);
+}
+
+.no-js {
+    text-align: center;
+    color: var(--text);
+}
+
+
+/* ---------- Link to the Task 3 page ---------- */
+
+.other-view {
+    max-width: 920px;
+    margin: 50px auto 0;
+    padding: 26px;
+    text-align: center;
+    background: var(--white);
+    border: 1px dashed var(--border);
+}
+
+.other-view p {
+    margin-bottom: 16px;
+    font-size: var(--body-size);
+    color: var(--text);
+}
+
+
+/* ---------- Tablet and mobile ---------- */
+
+@media (max-width: 768px) {
+
+    .track-switch {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .track-btn {
+        padding: 20px;
+    }
+
+    .viewing {
+        padding: 20px;
+    }
+
+    .viewing h3 {
+        font-size: 25px;
+    }
+
+    .timeline-wrap .journey-track {
+        margin: 0 14px;
+    }
+
+    .difficulty-key {
+        padding: 16px;
+    }
+
+    .roadmap-app .task-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .track-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 17px;
+    }
+
+    .track-text strong {
+        font-size: 19px;
+    }
+}
